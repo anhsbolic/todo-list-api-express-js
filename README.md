@@ -16,7 +16,7 @@ Todo List API Services using Express JS
 1. Clone this repository: `git clone
 2. Change directory to the project: `cd todo-list-api-express-js`
 3. Install dependencies: `npm install`
-4. Build the application: docker-compose build
+4. Build the application: `docker-compose build`
 5. Run the application: `docker-compose up`
 6. The application will be available at: `http://localhost:3001`
 7. To stop the application: `docker-compose down`
@@ -47,6 +47,8 @@ Todo List API Services using Express JS
 5. Delete Task
 
 ## API Documentation
+https://documenter.getpostman.com/view/2575881/2s946icWrY
+
 ### Task
 #### Create Task
 ##### Request
@@ -64,7 +66,7 @@ POST /api/v1/tasks
 ```json
 {
   "code": 201,
-  "status": "success",
+  "success": true,
   "message": "Task created successfully",
   "data": {
     "task": {
@@ -87,7 +89,7 @@ GET /api/v1/tasks?status=active
 ```json
 {
   "code": 200,
-  "status": "success",
+  "success": true,
   "message": "Tasks retrieved successfully",
   "data": {
     "tasks": [
@@ -100,6 +102,9 @@ GET /api/v1/tasks?status=active
         "__v": 0
       }
     ]
+  },
+  "meta": {
+    "total_filtered": 1
   }
 }
 ```
@@ -112,7 +117,7 @@ GET /api/v1/tasks/5f9b0b7b7f0b9b0017f0b9b0
 ```json
 {
   "code": 200,
-  "status": "success",
+  "success": true,
   "message": "Task retrieved successfully",
   "data": {
     "task": {
@@ -142,7 +147,7 @@ PUT /api/v1/tasks/5f9b0b7b7f0b9b0017f0b9b0
 ```json
 {
   "code": 200,
-  "status": "success",
+  "success": true,
   "message": "Task updated successfully",
   "data": {
     "task": {
@@ -165,9 +170,8 @@ DELETE /api/v1/tasks/5f9b0b7b7f0b9b0017f0b9b0
 ```json
 {
   "code": 200,
-  "status": "success",
-  "message": "Task deleted successfully",
-  "data": {}
+  "success": true,
+  "message": "Task deleted successfully"
 }
 ```
 
