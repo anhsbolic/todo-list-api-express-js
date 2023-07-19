@@ -133,3 +133,9 @@ dist
 .DS_Store
 /.DS_Store
 
+# jetbrains
+.idea
+.idea/
+/.idea
+
+
