@@ -7,6 +7,9 @@ require('dotenv').config();
 const respond = require('./libraries/respond');
 const logger = require('./libraries/logger');
 
+// import API Routes
+const taskApiV1 = require('./domains/task/v1/taskAPI');
+
 // db start & configs
 try {
     mongoose.Promise = bluebird;
@@ -43,20 +46,14 @@ try {
     throw err;
 }
 
-// routers
-const router = express.Router();
-
 // app
 const app = express();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// api routes
-router.get('/hello', function (req, res, next) {
-    respond.responseSuccess(res, 'Hello World!', {message: 'Hello World!'}, undefined);
-});
-app.use('/api', router);
+// API routers
+app.use('/api/v1/tasks', taskApiV1);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,0 +1,12 @@
+const TASK_STATUS_ACTIVE = "active";
+const TASK_STATUS_COMPLETED = "completed";
+const TASK_STATUS_LIST = [
+    TASK_STATUS_ACTIVE,
+    TASK_STATUS_COMPLETED,
+];
+
+module.exports = {
+    TASK_STATUS_ACTIVE,
+    TASK_STATUS_COMPLETED,
+    TASK_STATUS_LIST,
+}
