@@ -1,0 +1,40 @@
+version: '3.7'
+
+volumes:
+  to_do_list_app_mongo_data: { }
+  to_do_list_app_node_modules: { }
+
+networks:
+  to_do_list_app:
+    driver: bridge
+
+services:
+  to_do_list_app_mongo:
+    container_name: to_do_list_app_mongo
+    image: mongo
+    networks:
+      - to_do_list_app
+    environment:
+      MONGODB_USER: root
+      MONGODB_PASSWORD: passroot
+    ports:
+      - "27017:27017"
+    command: mongod
+    volumes:
+      - to_do_list_app_mongo_data:/data/db
+  to_do_list_api:
+    container_name: to_do_list_api
+    depends_on:
+      - to_do_list_app_mongo
+    networks:
+      - to_do_list_app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/src/app
+      - to_do_list_app_node_modules:/usr/src/app/node_modules
