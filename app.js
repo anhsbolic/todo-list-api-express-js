@@ -1,6 +1,7 @@
 const bluebird = require('bluebird');
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 // import libraries
@@ -51,6 +52,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors());
 
 // API routers
 app.use('/api/v1/tasks', taskApiV1);
