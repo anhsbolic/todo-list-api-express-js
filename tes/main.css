@@ -5,4 +5,5 @@
 /* card round */
 .card {
     border-radius: 10px;
+    background-color: red;
 }
