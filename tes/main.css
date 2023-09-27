@@ -1,3 +1,8 @@
 .txt {
     font-size: 14px;
 }
+
+/* card round */
+.card {
+    border-radius: 10px;
+}
